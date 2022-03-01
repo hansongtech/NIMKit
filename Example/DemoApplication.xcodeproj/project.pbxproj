@@ -27,6 +27,7 @@
 		61F16EE01BC5769100ABEE57 /* DefaultAvatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 61F16EDE1BC5769100ABEE57 /* DefaultAvatar@3x.png */; };
 		83F81D231F945C410054A63B /* NTESSessionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F81D221F945C410054A63B /* NTESSessionListViewController.m */; };
 		83F81D261F945EC60054A63B /* NTESContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F81D251F945EC60054A63B /* NTESContactViewController.m */; };
+		979B603B27CE0DCA004E30C9 /* NIM_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 979B603A27CE0DCA004E30C9 /* NIM_bg.jpeg */; };
 		CFB88BDE1A761FB5D6CE5489 /* libPods-DemoApplication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 929F48A09A546FE64E215530 /* libPods-DemoApplication.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		83F81D251F945EC60054A63B /* NTESContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESContactViewController.m; sourceTree = "<group>"; };
 		929F48A09A546FE64E215530 /* libPods-DemoApplication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoApplication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B8D4920413100CF9B6F36D /* Pods-DemoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoApplication/Pods-DemoApplication.release.xcconfig"; sourceTree = "<group>"; };
+		979B603A27CE0DCA004E30C9 /* NIM_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NIM_bg.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				6152C7861BE5DADB005E028F /* CustomChatCell */,
 				61F16E821BC567F700ABEE57 /* Assets.xcassets */,
 				61F16E841BC567F700ABEE57 /* LaunchScreen.storyboard */,
+				979B603A27CE0DCA004E30C9 /* NIM_bg.jpeg */,
 				61F16E871BC567F700ABEE57 /* Info.plist */,
 				61F16E761BC567F700ABEE57 /* Supporting Files */,
 			);
@@ -246,6 +249,7 @@
 				6152C7981BE5E440005E028F /* icon_custom_pressed@2x.png in Resources */,
 				6152C7991BE5E440005E028F /* icon_custom_pressed@3x.png in Resources */,
 				61F16EE01BC5769100ABEE57 /* DefaultAvatar@3x.png in Resources */,
+				979B603B27CE0DCA004E30C9 /* NIM_bg.jpeg in Resources */,
 				61F16E811BC567F700ABEE57 /* Main.storyboard in Resources */,
 				6152C7961BE5E440005E028F /* icon_custom_normal@2x.png in Resources */,
 			);

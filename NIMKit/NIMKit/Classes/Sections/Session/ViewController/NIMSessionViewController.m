@@ -105,7 +105,8 @@
     
     if ([self.sessionConfig respondsToSelector:@selector(sessionBackgroundImage)] && [self.sessionConfig sessionBackgroundImage]) {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        imgView.image = [self.sessionConfig sessionBackgroundImage];
+//        imgView.image = [self.sessionConfig sessionBackgroundImage];
+        imgView.image = [UIImage imageNamed:@"NIM_bg.jpeg"];
         imgView.contentMode = UIViewContentModeScaleAspectFill;
         self.tableView.backgroundView = imgView;
     }
