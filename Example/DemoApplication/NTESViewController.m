@@ -9,11 +9,8 @@
 #import "NTESViewController.h"
 #import "NIMKit.h"
 #import "NTESSessionListViewController.h"
-
 #define NIMMyAccount   @"lilei"
-
 #define NIMMyToken     @"123456"
-
 
 
 @interface NTESViewController ()
