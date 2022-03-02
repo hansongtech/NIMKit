@@ -11,7 +11,7 @@
 #import "UIView+NIM.h"
 #import "UIImage+NIMKit.h"
 #import "NIMGlobalMacro.h"
-
+#import "UIColor+NIMKit.h"
 @implementation NIMContactSelectTabView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -28,6 +28,8 @@
         [_doneButton sizeToFit];
         _doneButton.nim_size = CGSizeMake(MAX(doneButtonNormal.size.width, _doneButton.nim_width + 12.0),
                                           doneButtonNormal.size.height);
+        [_doneButton setTitleColor: [UIColor colorWithHex:0x337EFF alpha:1] forState:0];
+      
         [self addSubview:_doneButton];
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage nim_imageInKit:@"contact_bg.png"]];
     }
