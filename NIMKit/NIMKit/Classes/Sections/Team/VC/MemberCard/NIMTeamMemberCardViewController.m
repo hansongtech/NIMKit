@@ -100,14 +100,14 @@
                                    SepLeftEdge   : @(SepLineLeft),
                                    };
     
-    NSDictionary *inviterAccidItem = @{
-                                       Title         : @"邀请人".nim_localized,
-                                       DetailTitle   : _member.inviterAccid ? (_member.inviterAccid.length ? _member.inviterAccid : _member.userId) : @"本地不存在".nim_localized,
-                                       CellAction    : @"",
-                                       ShowAccessory : [self isOwner] && ![self isSelf]? @(YES) : @(NO),
-                                       RowHeight     : @(50),
-                                       SepLeftEdge   : @(SepLineLeft),
-                                       };
+//    NSDictionary *inviterAccidItem = @{
+//                                       Title         : @"邀请人".nim_localized,
+//                                       DetailTitle   : _member.inviterAccid ? (_member.inviterAccid.length ? _member.inviterAccid : _member.userId) : @"本地不存在".nim_localized,
+//                                       CellAction    : @"",
+//                                       ShowAccessory : [self isOwner] && ![self isSelf]? @(YES) : @(NO),
+//                                       RowHeight     : @(50),
+//                                       SepLeftEdge   : @(SepLineLeft),
+//                                       };
     
     NSDictionary *isMuteItem =  @{
                                   Title         : @"设置禁言".nim_localized,
@@ -134,7 +134,7 @@
     if (_member.teamType == NIMTeamTypeSuper) {
         rowContent = @[headerItem, nickItem, userTypeItem, isMuteItem, kickItem];
     } else {
-        rowContent = @[headerItem, nickItem, userTypeItem, inviterAccidItem, isMuteItem, kickItem];
+        rowContent = @[headerItem, nickItem, userTypeItem, isMuteItem, kickItem];
     }
 
     NSArray *data = @[

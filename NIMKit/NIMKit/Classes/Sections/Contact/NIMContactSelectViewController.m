@@ -16,7 +16,7 @@
 #import "NIMKit.h"
 #import "NIMKitDependency.h"
 #import "NIMGlobalMacro.h"
-
+#import "UIColor+NIMKit.h"
 @interface NIMContactSelectViewController ()<UITableViewDataSource, UITableViewDelegate, NIMContactPickedViewDelegate>{
     NSMutableArray *_selectecContacts;
 }
@@ -73,7 +73,14 @@
 - (void)setUpNav
 {
     self.navigationItem.title = [self.config respondsToSelector:@selector(title)] ? [self.config title] : @"选择联系人".nim_localized;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancelBtnClick:)];
+    UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftItem addTarget:self action:@selector(onCancelBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [leftItem setTitle:@"取消" forState:0];
+    [leftItem setTitleColor:[UIColor colorWithHex:0x4DBE98 alpha:1 ] forState:0];
+    [leftItem sizeToFit];
+    UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
+    self.navigationItem.leftBarButtonItem  = enterTeamCardItem;
+    
     if ([self.config respondsToSelector:@selector(showSelectDetail)] && self.config.showSelectDetail) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:label];
