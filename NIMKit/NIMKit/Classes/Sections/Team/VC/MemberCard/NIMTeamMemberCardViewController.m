@@ -80,8 +80,11 @@
                                  CellClass     : @"NIMTeamMemberCardHeaderCell",
                                  RowHeight     : @(222),
                                  ExtraInfo     : @{@"user":usrInfo, @"userType":@(_member.userType)},
+                                 CellAction    : @"onAvatarBtnClick",
+                                 ForbidSelect  : @(YES),
                                  SepLeftEdge   : @(SepLineLeft)
                                  };
+    
     NSDictionary *nickItem = @{
                                Title         : @"群昵称".nim_localized,
                                DetailTitle   : (usrInfo.showName ?: @"未设置".nim_localized),
@@ -187,6 +190,9 @@
     [sheet showInView:self.view];
 }
 
+-(void)onAvatarBtnClick{
+    
+}
 - (void)updateMute:(UISwitch *)switcher {
     NSString *userId = self.member.userId;
     BOOL mute = switcher.on;

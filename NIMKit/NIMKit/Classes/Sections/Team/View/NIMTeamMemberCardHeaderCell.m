@@ -30,10 +30,18 @@
     if (self) {
         [self.contentView addSubview:self.avatarView];
         [self.contentView addSubview:self.nickLabel];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+        [self.avatarView addGestureRecognizer:tap];
+        [tap addTarget:self action:@selector(clickavatarBT)];
     }
     return self;
 }
-
+-(void)clickavatarBT{
+    if (self.clickavatarBlock) {
+        self.clickavatarBlock();
+    }
+}
 - (void)refreshData:(NIMCommonTableRow *)rowData tableView:(UITableView *)tableView;{
     NIMKitInfo *userInfo = rowData.extraInfo[@"user"];
     NSURL *avatarURL;

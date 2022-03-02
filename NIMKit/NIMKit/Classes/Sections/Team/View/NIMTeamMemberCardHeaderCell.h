@@ -10,5 +10,5 @@
 #import "NIMCommonTableViewCell.h"
 
 @interface NIMTeamMemberCardHeaderCell : UITableViewCell<NIMCommonTableViewCell>
-
+@property (copy,nonatomic)void(^clickavatarBlock)(void);
 @end

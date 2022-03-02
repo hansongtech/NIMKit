@@ -22,13 +22,13 @@
         _doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *doneButtonNormal      = [UIImage nim_imageInKit:@"icon_cell_blue_normal"];
         UIImage *doneButtonHighlighted = [UIImage nim_imageInKit:@"icon_cell_blue_normal"];
-        [_doneButton setBackgroundImage:doneButtonNormal forState:UIControlStateNormal];
-        [_doneButton setBackgroundImage:doneButtonHighlighted forState:UIControlStateHighlighted];
+//        [_doneButton setBackgroundImage:doneButtonNormal forState:UIControlStateNormal];
+//        [_doneButton setBackgroundImage:doneButtonHighlighted forState:UIControlStateHighlighted];
         [_doneButton setTitle:@"确定".nim_localized forState:UIControlStateNormal];
         [_doneButton sizeToFit];
         _doneButton.nim_size = CGSizeMake(MAX(doneButtonNormal.size.width, _doneButton.nim_width + 12.0),
                                           doneButtonNormal.size.height);
-        [_doneButton setTitleColor: [UIColor colorWithHex:0x337EFF alpha:1] forState:0];
+        [_doneButton setTitleColor: [UIColor colorWithHex:0x4DBE98 alpha:1] forState:0];
       
         [self addSubview:_doneButton];
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage nim_imageInKit:@"contact_bg.png"]];

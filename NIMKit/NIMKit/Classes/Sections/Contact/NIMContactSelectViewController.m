@@ -75,7 +75,7 @@
     self.navigationItem.title = [self.config respondsToSelector:@selector(title)] ? [self.config title] : @"选择联系人".nim_localized;
     UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftItem addTarget:self action:@selector(onCancelBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [leftItem setTitle:@"取消" forState:0];
+    [leftItem setTitle:@"  取消" forState:0];
     [leftItem setTitleColor:[UIColor colorWithHex:0x4DBE98 alpha:1 ] forState:0];
     [leftItem sizeToFit];
     UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
