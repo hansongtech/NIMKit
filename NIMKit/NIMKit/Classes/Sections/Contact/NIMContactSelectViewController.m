@@ -58,7 +58,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.tableView];
-    
+    self.tableView.sectionIndexColor = [UIColor colorWithHex:0x4DBE98 alpha:1];
     [self.view addSubview:self.selectIndicatorView];
     
     self.tableView.dataSource = self;
