@@ -59,7 +59,11 @@
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.tableView];
     self.tableView.sectionIndexColor = [UIColor colorWithHex:0x888888 alpha:1];
-    self.tableView.sectionIndexBackgroundColor =[UIColor colorWithHex:0x4DBE98 alpha:1];
+    
+    self.tableView.sectionIndexTrackingBackgroundColor = [UIColor colorWithHex:0x4DBE98 alpha:1];
+ 
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CELL"];
+    
     [self.view addSubview:self.selectIndicatorView];
     
     self.tableView.dataSource = self;
@@ -153,7 +157,7 @@
 }
 
 - (IBAction)onDoneBtnClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];    
+    [self dismissViewControllerAnimated:YES completion:nil];
     if (_selectecContacts.count) {
         if ([self.delegate respondsToSelector:@selector(didFinishedSelect:)]) {
             [self.delegate didFinishedSelect:_selectecContacts];
@@ -201,27 +205,45 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.sectionTitles.count;
+    return self.sectionTitles.count+1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *arr = [self.contentDic valueForKey:self.sectionTitles[section]];
-    return arr.count;
+    if (section == 0) {
+        return 1;
+    }else{
+        NSArray *arr = [self.contentDic valueForKey:self.sectionTitles[section-1]];
+        return arr.count;
+    }
+   
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if ([self.sectionTitles[0] isEqualToString:@"$"] && section == 0) {
-        return @"机器人".nim_localized;
-    }else {
-        return self.sectionTitles[section];
+    if (section != 0) {
+        if ([self.sectionTitles[0] isEqualToString:@"$"] && section == 1) {
+            return @"机器人".nim_localized;
+        }else {
+            return self.sectionTitles[section-1];
+        }
     }
+    return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = self.sectionTitles[indexPath.section];
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
+        cell.imageView.image = [UIImage imageNamed:@"createGroup"];
+        cell.textLabel.text =@"选择已有的群";
+        cell.textLabel.font = [UIFont systemFontOfSize:12];
+        cell.textLabel.textColor = [UIColor colorWithHex:0x888888 alpha:1];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
+        
+    }else{
+    NSString *title = self.sectionTitles[indexPath.section-1];
     NSMutableArray *arr = [self.contentDic valueForKey:title];
     id<NIMGroupMemberProtocol> contactItem = arr[indexPath.row];
     
@@ -233,6 +255,7 @@
     cell.accessoryBtn.selected = [_selectecContacts containsObject:[contactItem memberId]];
     [cell refreshItem:contactItem];
     return cell;
+    }
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -248,8 +271,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    NSString *title = self.sectionTitles[indexPath.section];
+    if (indexPath.section == 0) {
+        if (self.groupBlock) {
+            self.groupBlock();
+        }
+    }else{
+        
+   
+    NSString *title = self.sectionTitles[indexPath.section-1];
     NSMutableArray *arr = [self.contentDic valueForKey:title];
     id<NIMGroupMemberProtocol> member = arr[indexPath.row];
 
@@ -274,7 +303,19 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self refreshDetailTitle];
+        
+    }
 }
+///// 点击右侧索引时的代理方法
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    //获取索引出的目标位置
+//       NSIndexPath* path = [NSIndexPath indexPathForRow:index inSection:0];
+//
+//       //滚动到目标cell，使其存在于屏幕底部，需要动画
+//       [tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    return index-1;
+//}
 
 #pragma mark - ContactPickedViewDelegate
 

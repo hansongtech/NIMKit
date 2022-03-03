@@ -11,7 +11,7 @@
 
 typedef void(^ContactSelectFinishBlock)(NSArray *);
 typedef void(^ContactSelectCancelBlock)(void);
-
+typedef void(^ContactSelectOtherGroupBlock)(void);
 @protocol NIMContactSelectDelegate <NSObject>
 
 @optional
@@ -35,6 +35,7 @@ typedef void(^ContactSelectCancelBlock)(void);
 @property (nonatomic, copy) ContactSelectFinishBlock finshBlock;
 
 @property (nonatomic, copy) ContactSelectCancelBlock cancelBlock;
+@property(nonatomic,copy)ContactSelectOtherGroupBlock groupBlock;
 
 /**
  *  初始化方法
