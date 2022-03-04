@@ -36,6 +36,8 @@ typedef void(^ContactSelectOtherGroupBlock)(void);
 
 @property (nonatomic, copy) ContactSelectCancelBlock cancelBlock;
 @property(nonatomic,copy)ContactSelectOtherGroupBlock groupBlock;
+@property(nonatomic,assign)BOOL hiddenGroupList;
+
 
 /**
  *  初始化方法

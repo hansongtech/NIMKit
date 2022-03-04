@@ -205,34 +205,70 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.sectionTitles.count+1;
+    if (self.hiddenGroupList == YES) {
+        return self.sectionTitles.count;
+    }else{
+        return self.sectionTitles.count+1;
+    }
+   
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }else{
-        NSArray *arr = [self.contentDic valueForKey:self.sectionTitles[section-1]];
+    if (self.hiddenGroupList == YES) {
+        NSArray *arr = [self.contentDic valueForKey:self.sectionTitles[section]];
         return arr.count;
+    }else{
+    
+        if (section == 0) {
+            return 1;
+        }else{
+            NSArray *arr = [self.contentDic valueForKey:self.sectionTitles[section-1]];
+            return arr.count;
+        }
+        
     }
+    return 0;
    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if (self.hiddenGroupList == YES) {
+        if ([self.sectionTitles[0] isEqualToString:@"$"] && section ==0) {
+            return @"机器人".nim_localized;
+        }else {
+            return self.sectionTitles[section];
+        }
+    }else{
     if (section != 0) {
         if ([self.sectionTitles[0] isEqualToString:@"$"] && section == 1) {
             return @"机器人".nim_localized;
         }else {
             return self.sectionTitles[section-1];
         }
+      }
+   
     }
     return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.hiddenGroupList == YES) {
+        NSString *title = self.sectionTitles[indexPath.section];
+        NSMutableArray *arr = [self.contentDic valueForKey:title];
+        id<NIMGroupMemberProtocol> contactItem = arr[indexPath.row];
+        
+        NIMContactDataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectContactCellID"];
+        if (cell == nil) {
+            cell = [[NIMContactDataCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SelectContactCellID"];
+        }
+        cell.accessoryBtn.hidden = NO;
+        cell.accessoryBtn.selected = [_selectecContacts containsObject:[contactItem memberId]];
+        [cell refreshItem:contactItem];
+        return cell;
+    }else{
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
         cell.imageView.image = [UIImage imageNamed:@"createGroup"];
@@ -256,6 +292,7 @@
     [cell refreshItem:contactItem];
     return cell;
     }
+    }
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -271,6 +308,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.hiddenGroupList == YES) {
+        NSString *title = self.sectionTitles[indexPath.section];
+        NSMutableArray *arr = [self.contentDic valueForKey:title];
+        id<NIMGroupMemberProtocol> member = arr[indexPath.row];
+
+        NSString *memberId = [(id<NIMGroupMemberProtocol>)member memberId];
+        NIMContactDataCell *cell = (NIMContactDataCell *)[tableView cellForRowAtIndexPath:indexPath];
+        NIMKitInfo *info;
+        info = [self.config getInfoById:memberId];
+        if([_selectecContacts containsObject:memberId]) {
+            [_selectecContacts removeObject:memberId];
+            cell.accessoryBtn.selected = NO;
+            [self.selectIndicatorView.pickedView removeMemberInfo:info];
+        } else if(_selectecContacts.count >= _maxSelectCount) {
+            if ([self.config respondsToSelector:@selector(selectedOverFlowTip)]) {
+                NSString *tip = [self.config selectedOverFlowTip];
+                [self.view makeToast:tip duration:2.0 position:CSToastPositionCenter];
+            }
+            cell.accessoryBtn.selected = NO;
+        } else {
+            [_selectecContacts addObject:memberId];
+            cell.accessoryBtn.selected = YES;
+            [self.selectIndicatorView.pickedView addMemberInfo:info];
+        }
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        [self refreshDetailTitle];
+    }else{
     if (indexPath.section == 0) {
         if (self.groupBlock) {
             self.groupBlock();
@@ -304,6 +368,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self refreshDetailTitle];
         
+    }
     }
 }
 ///// 点击右侧索引时的代理方法
