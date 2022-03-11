@@ -1006,7 +1006,7 @@
 {
     if (!_advanceMenu)
     {
-        _advanceMenu = [[NIMAdvanceMenu alloc] initWithFrame:CGRectMake(0, 0, 320, 190) emotions:self.sessionConfig.emotionItems];
+        _advanceMenu = [[NIMAdvanceMenu alloc] initWithFrame:CGRectMake(0, 0, 320, 150) emotions:self.sessionConfig.emotionItems];
         [_advanceMenu setConfig:self.sessionConfig];
         [self.view addSubview:_advanceMenu];
         _advanceMenu.actionDelegate = self;
