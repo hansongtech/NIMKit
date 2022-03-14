@@ -54,7 +54,16 @@
     _audioBackgroundView.userInteractionEnabled = NO;
     [self addSubview:_audioBackgroundView];
     
-    UIImage * image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing.png"];
+    UIImage *image;
+    BOOL outgoing = self.model.message.isOutgoingMsg;
+    // 发出去的消息
+    if (outgoing){
+        image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing.png"];
+    }else{
+        image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing_222"];
+    }
+   
+    
     _voiceImageView = [[UIImageView alloc] initWithImage:image];
     NSArray * animateNames = @[@"icon_receiver_voice_playing_001.png",@"icon_receiver_voice_playing_002.png",@"icon_receiver_voice_playing_003.png"];
     NSMutableArray * animationImages = [[NSMutableArray alloc] initWithCapacity:animateNames.count];
@@ -95,7 +104,7 @@
     UIColor *color = nil;
     if (data.shouldShowLeft)
     {
-        color = [UIColor colorWithHex:0xF3F3F3 alpha:1];
+        color = [UIColor colorWithHex:0xFFFFFF alpha:1];
     }
     else
     {
