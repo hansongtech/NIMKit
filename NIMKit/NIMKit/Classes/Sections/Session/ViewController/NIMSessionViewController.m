@@ -903,9 +903,9 @@
 
 - (void)changeLeftBarBadge:(NSInteger)unreadCount
 {
-    NIMCustomLeftBarView *leftBarView = (NIMCustomLeftBarView *)self.navigationItem.leftBarButtonItem.customView;
-    leftBarView.badgeView.badgeValue = @(unreadCount).stringValue;
-    leftBarView.badgeView.hidden = !unreadCount;
+//    NIMCustomLeftBarView *leftBarView = (NIMCustomLeftBarView *)self.navigationItem.leftBarButtonItem.customView;
+//    leftBarView.badgeView.badgeValue = @(unreadCount).stringValue;
+//    leftBarView.badgeView.hidden = !unreadCount;
 }
 
 
