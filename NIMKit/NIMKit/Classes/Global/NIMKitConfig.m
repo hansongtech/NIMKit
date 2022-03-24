@@ -90,7 +90,8 @@
     _receiptFont  = [UIFont systemFontOfSize:13.0]; 
     _receiptColor = [UIColor darkGrayColor];
     _avatarType = NIMKitAvatarTypeRounded;
-    _cellBackgroundColor = NIMKit_UIColorFromRGB(0xE4E7EC);
+//    _cellBackgroundColor = NIMKit_UIColorFromRGB(0xE4E7EC);
+    _cellBackgroundColor = [UIColor clearColor];
     _leftBubbleSettings  = [[NIMKitSettings alloc] init:NO];
     _rightBubbleSettings = [[NIMKitSettings alloc] init:YES];
 }
