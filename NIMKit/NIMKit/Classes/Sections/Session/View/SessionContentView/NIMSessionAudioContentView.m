@@ -57,12 +57,12 @@
     UIImage *image;
     BOOL outgoing = self.model.message.isOutgoingMsg;
     // 发出去的消息
-    if (outgoing){
-        image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing.png"];
-    }else{
-        image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing_222"];
-    }
-   
+//    if (outgoing){
+//        image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing.png"];
+//    }else{
+//        image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing_222"];
+//    }
+    image = [UIImage nim_imageInKit:@"icon_receiver_voice_playing_003.png"];
     
     _voiceImageView = [[UIImageView alloc] initWithImage:image];
     NSArray * animateNames = @[@"icon_receiver_voice_playing_001.png",@"icon_receiver_voice_playing_002.png",@"icon_receiver_voice_playing_003.png"];

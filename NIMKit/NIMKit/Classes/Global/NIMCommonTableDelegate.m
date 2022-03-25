@@ -147,6 +147,7 @@ static NSString *DefaultTableCell = @"UITableViewCell";
         return nil;
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+    view.backgroundColor = [UIColor whiteColor];
     return view;
 }
 
