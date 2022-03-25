@@ -159,8 +159,12 @@
     sep.hidden = (indexPath.row + 1 == [self.tableView numberOfRowsInSection:indexPath.section]);
     
     cell.textLabel.text = bodyData.title;
+    cell.textLabel.textColor =NIMKit_UIColorFromRGB(0x333333);
+    cell.textLabel.font =[UIFont systemFontOfSize:12];
     if ([bodyData respondsToSelector:@selector(subTitle)]) {
         cell.detailTextLabel.text = bodyData.subTitle;
+        cell.detailTextLabel.textColor =NIMKit_UIColorFromRGB(0xB1B1B1);
+        cell.detailTextLabel.font =[UIFont systemFontOfSize:12];
     }
     
     if ([bodyData respondsToSelector:@selector(actionDisabled)] && bodyData.actionDisabled) {
@@ -231,6 +235,8 @@
     
     cell.textLabel.text = bodyData.title;
     cell.detailTextLabel.text = bodyData.subTitle;
+    cell.textLabel.textColor =NIMKit_UIColorFromRGB(0x333333);
+    cell.textLabel.font =[UIFont systemFontOfSize:12];
     if ([bodyData respondsToSelector:@selector(actionDisabled)] && bodyData.actionDisabled) {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }else{
@@ -260,6 +266,8 @@
     sep.hidden = (indexPath.row + 1 == [self.tableView numberOfRowsInSection:indexPath.section]);
     
     cell.textLabel.text = bodyData.title;
+    cell.textLabel.textColor =NIMKit_UIColorFromRGB(0x333333);
+    cell.textLabel.font =[UIFont systemFontOfSize:12];
     cell.switcher.on = bodyData.switchOn;
     cell.identify = bodyData.identify;
     

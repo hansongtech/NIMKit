@@ -41,6 +41,7 @@ NSString *const kTeamMemberInfo = @"kTeamMemberInfo";
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.font = [UIFont systemFontOfSize:12.f];
+        _titleLabel.textColor = NIMKit_UIColorFromRGB(0x333333);
         [self addSubview:_titleLabel];
         _imageView   = [[NIMAvatarImageView alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
         [self addSubview:_imageView];

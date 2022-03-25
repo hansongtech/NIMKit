@@ -10,7 +10,7 @@
 #import "UIView+NIM.h"
 #import "NIMCommonTableData.h"
 #import "UIImage+NIMKit.h"
-
+#import "NIMKitUtil.h"
 @interface NIMKitColorButtonCell()
 
 @property (nonatomic,strong) NIMCommonTableRow *rowData;
@@ -100,10 +100,14 @@
         default:
             break;
     }
-    UIImage *imageNormal = [[UIImage nim_imageInKit:imageNormalName] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
-    UIImage *imageHighLight = [[UIImage nim_imageInKit:imageHighLightName] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
-    [self setBackgroundImage:imageNormal forState:UIControlStateNormal];
-    [self setBackgroundImage:imageHighLight forState:UIControlStateHighlighted];
+//    UIImage *imageNormal = [[UIImage nim_imageInKit:imageNormalName] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
+//    UIImage *imageHighLight = [[UIImage nim_imageInKit:imageHighLightName] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
+//    [self setBackgroundImage:imageNormal forState:UIControlStateNormal];
+//    [self setBackgroundImage:imageHighLight forState:UIControlStateHighlighted];
+    self.titleLabel.font = [UIFont systemFontOfSize:12];
+    UIColor *color = NIMKit_UIColorFromRGB(0xE95855);
+    [self setTitleColor:color forState:0];
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
