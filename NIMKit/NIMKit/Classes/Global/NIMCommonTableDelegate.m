@@ -69,6 +69,10 @@ static NSString *DefaultTableCell = @"UITableViewCell";
     }
     cell.accessoryType = tableRow.showAccessory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     cell.userInteractionEnabled = !tableRow.userInteractionDisable;
+    cell.textLabel.textColor =NIMKit_UIColorFromRGB(0x333333);
+    cell.textLabel.font =[UIFont systemFontOfSize:12];
+    cell.detailTextLabel.textColor =NIMKit_UIColorFromRGB(0x333333);
+    cell.detailTextLabel.font =[UIFont systemFontOfSize:12];
     return cell;
 }
 
@@ -159,6 +163,7 @@ static NSString *DefaultTableCell = @"UITableViewCell";
 - (void)refreshData:(NIMCommonTableRow *)rowData cell:(UITableViewCell *)cell{
     cell.textLabel.text = rowData.title;
     cell.detailTextLabel.text = rowData.detailTitle;
+    
 }
 
 @end

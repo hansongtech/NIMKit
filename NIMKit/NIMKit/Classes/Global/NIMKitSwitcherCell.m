@@ -9,7 +9,7 @@
 #import "NIMKitSwitcherCell.h"
 #import "NIMCommonTableData.h"
 #import "UIView+NIM.h"
-
+#import "NIMKitUtil.h"
 
 @interface NIMKitSwitcherCell ()
 
@@ -30,6 +30,10 @@
 - (void)refreshData:(NIMCommonTableRow *)rowData tableView:(UITableView *)tableView{
     self.textLabel.text       = rowData.title;
     self.detailTextLabel.text = rowData.detailTitle;
+    self.textLabel.textColor = NIMKit_UIColorFromRGB(0x333333);
+    self.textLabel.font =[UIFont systemFontOfSize:12];
+    self.detailTextLabel.textColor = NIMKit_UIColorFromRGB(0x333333);
+    self.detailTextLabel.font =[UIFont systemFontOfSize:12];
     NSString *actionName      = rowData.cellActionName;
     [self.switcher setOn:[rowData.extraInfo boolValue] animated:NO];
     [self.switcher removeTarget:self.nim_viewController action:NULL forControlEvents:UIControlEventValueChanged];
